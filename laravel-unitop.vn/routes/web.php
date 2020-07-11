@@ -17,6 +17,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
+/*
+##### lession 5/7/2020
+
 #####Định tuyến cơ bản
 
 Route::get('/post', function () {
@@ -60,15 +64,37 @@ Route::get('users/{id?}', function ($id = 0) {
 // })-> where('id','[0-9]+');
 
 //nhập được nhiều điều kiện
-Route::get('product/{slug}/{id}', function ($slug,$id) {
-    return $id.'----'.$slug;
-})-> where(['slug'=>'[A-Za-z0-9-_]+']);
+Route::get('product/{slug}/{id}', function ($slug, $id) {
+    return $id . '----' . $slug;
+})->where(['slug' => '[A-Za-z0-9-_]+']);
 
 //Định tuyến qua một view
-Route::view('/welcome','welcome');
+Route::view('/welcome', 'welcome');
 //tạo view post.blade.php
-Route::view('/post','post',['id'=>20]);
+Route::view('/post', 'post', ['id' => 20]);
 
 //Định tuyến qua controller
-Route::get('/post/{id}','PostController@detail');
+Route::get('/post/{id}', 'PostController@detail');
 
+#Bài tập routing - quẩn lý bài viết trong admin
+Route::get('admin/post/add', function () {
+    return "Thêm bài viết";
+});
+Route::get('admin/post/update/{id}', function ($id) {
+    return "cập nhật bài viết: " . $id;
+});
+Route::get('admin/post/show', function () {
+    return "Hiển thị danh sách bài viết";
+});
+
+Route::get('admin/post/delete/{id}', function ($id) {
+    return "Xóa bài viết " . $id;
+});
+*/
+
+#### Định tuyến qua ProductController
+Route::get('product/show/{id}', 'ProductController@show');
+
+Route::get('product/create', 'ProductController@create');
+
+Route::get('product/update/{id}', 'ProductController@update');
